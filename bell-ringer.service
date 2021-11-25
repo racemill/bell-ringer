@@ -1,0 +1,12 @@
+[Unit]
+Description=Ring the bell
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=sudo /usr/local/bell-ringer/bellserver.py  
+
+[Install]
+WantedBy=multi-user.target
+

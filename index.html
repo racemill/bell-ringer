@@ -1,0 +1,227 @@
+<html>
+	<head>
+		<title>BELL RINGER</title>
+
+		<style>
+
+		body {
+			background-image: url("https://wallpapertag.com/wallpaper/full/6/7/5/456833-gorgerous-pine-tree-wallpaper-2560x1600.jpg");
+			content-align: center;
+		}
+
+		#main {
+			background: rgba(0, 0, 0, 0);
+			padding-top: 15px;
+			height: 370px;
+			overflow: hidden;
+		}
+
+		.center {
+			text-align: center;
+			width: 75%;
+			color: white;
+			font-size: 32px;
+		}
+		.button {
+			background: rgba(0, 0, 0, 0);
+			color: white;
+			font-size: 32px;
+
+		}
+		.dropbtn {
+		  background: rgba(0, 0, 0, 0);
+		  color: white;
+		  padding: 0px 60px;
+		  font-size: 32px;
+		  border: none;
+		  cursor: pointer;
+
+		}
+
+		.dropbtn:hover, .dropbtn:focus {
+		  background-color: #306754;
+		}
+
+		.dropdown {
+		  position: relative;
+		  display: inline-block;
+		}
+
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f1f1f1;
+		  min-width: 280px;
+		  overflow: auto;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+		  z-index: 1;
+		}
+
+		.dropdown-content a {
+		  color: black;
+		  font-size: 28px;
+		  padding: 15px 0px;
+		  text-decoration: none;
+		  display: block;
+		}
+
+		.dropdown a:hover {background-color: #ddd;}
+
+		.show {display: block;}
+		
+		#spacer {
+			padding: 90px 0px;
+		}
+
+		#footer {
+			background: rgba(0, 0, 0, 0.5);
+ 		}
+
+		.fcenter {
+			text-align: center;
+			width: 75%;
+			color: white;
+			
+		}
+		</style>
+
+		<script>
+			// This function is called to send a POST request 
+			// in order to tell the server to ring the bell
+			function sendRingRequest() {
+				
+				// Set up ajax request
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					var currentNotifs = document.getElementById("bellnotifs").innerHTML;
+
+					// Upon receiving 200 from server, notify user that bell has been rung
+					if (this.readyState == 4 && this.status == 200) {
+						var newNotifs = "</br>Bell went BONG    ";
+						document.getElementById("bellnotifs").innerHTML = newNotifs + currentNotifs;
+					} 
+
+					// Upon receiving 428 from server, notify user that bell has not been rung
+					if (this.readyState == 4 && this.status == 429) {
+						var newNotifs = "</br>Bell be BONGING, ez Brah!";
+						document.getElementById("bellnotifs").innerHTML = newNotifs + currentNotifs;
+					}
+
+					// Upon receiving 403 from server, notify user that bell has not been rung from time guard
+					if (this.readyState == 4 && this.status == 403) {
+						var newNotifs = "</br>Not in Allowed Time Range";
+						document.getElementById("bellnotifs").innerHTML = newNotifs + currentNotifs;
+					}
+
+				};
+
+				xhttp.open("POST", "ring", true);
+				xhttp.send();
+			}
+		</script>
+		<script>
+			// This function is called to display random Bell trivia facts on the web page
+			// Array of Bell references.
+			var trivia = [
+				'CAMPANOLOGY - The study of bells. It encompasses the technology of bells, how they are cast, tuned, rung, and sounded as well as the history, methods, and traditions of bell ringing as an art.',
+				'PEAL - In campanology (bell ringing), a peal is the special name given to a specific type of performance of change ringing which meets certain exacting conditions for duration, complexity and quality.',
+				'RING MY BELL - is a 1979 disco song sung by Anita Ward. The song was originally written for then eleven-year-old Stacy Lattisaw, as a teenybopper song about kids talking on the telephone. When Lattisaw signed with a different label, Anita Ward was asked to sing it instead, and it became her only major hit.',
+				'BELL BOTTOM JEANS - Bell-bottoms (or flares) are a style of pants that become wider from the knees downward, forming a bell-like shape of the pant leg. Big in the 60s and 70s',
+				'NYSE OPENING/CLOSING BELL  -  One of the most familiar images of the NYSE on the evening news is the loud ringing of a bell, signaling the opening or closing of the day’s trading. Trading floor bells are more than just a colorful tradition. They are critical to the orderly functioning of the marketplace, assuring that no trades take place before the opening or after the close.',
+				'BELL - character from the anime series  "Is It Wrong to Try to Pick Up Girls in a Dungeon?" based on the light novel series created by Fujino Ōmori. The story follows the exploits of Bell Cranel, a 14-year-old solo adventurer under the goddess Hestia.',
+				'BELLS BEER - Michigan based brewer of Inspired Beers. Bells brews acclaimed beers such as Hopslam Ale, Oberon Ale, and Two Hearted Ale. It operates a brewpub and a store selling merchandise and homebrewing supplies at its Kalamazoo location. Begun as a homebrewing store in 1983, and producing beer since 1985, it is the oldest existing craft brewery in Michigan',
+				'UNRING THE BELL - In law, unring the bell is an analogy used to suggest the difficulty of forgetting information once it is known. When discussing jury trials, the phrase is sometimes used to describe the judges instructions to the jury to ignore inadmissible evidence or statements they have heard.',
+				'GET YOUR BELL RUNG - To receive a violent blow or injury, especially to the head and as such, might stun, concuss, or incapacitate.',
+				'JINGLE BELLS - one of the best-known and commonly sung American songs in the world. It was written by James Lord Pierpont and published under the title "The One Horse Open Sleigh" in the autumn of 1857. Although it has no original connection to Christmas, it became associated with Christmas music and the holiday season in the 1860s. It was first recorded in 1889 on an Edison cylinder; this recording, believed to be the first Christmas record, is lost, but an 1898 recording also from Edison Records survives.',
+				'JINGLE BELL ROCK - is an American popular Christmas song first released by Bobby Helms in 1957. It has received frequent airplay in the United States during every Christmas season since then.',
+				'SAVED BY THE BELL - an American television sitcom on NBC. It was broadcast from August 20, 1989 to May 22, 1993. The series starred Mark-Paul Gosselaar, Dustin Diamond, Lark Voorhies, Dennis Haskins, Tiffani-Amber Thiessen, Elizabeth Berkley, and Mario Lopez. Targeted at kids and teens, Saved by the Bell was broadcast in the United States on Saturday mornings.',
+				'FOR WHOM THE BELL TOLLS - is a novel by Ernest Hemingway published in 1940. It tells the story of Robert Jordan, a young American volunteer attached to a Republican guerrilla unit during the Spanish Civil War. As a dynamiter, he is assigned to blow up a bridge during an attack on the city of Segovia.',
+				'TACO BELL - Taco Bell is an American-based chain of fast food restaurants originating in Irvine, California in 1962, by founder Glen Bell. Taco Bell is a subsidiary of Yum! Brands, Inc.',
+				'MA BELL - The Bell System was the system of companies, led by the Bell Telephone Company and later by AT&T, that dominated the telephone services industry in North America for 100 years from its creation in 1877 until its antitrust breakup in the early 1980s. The system of companies was often colloquially called Ma Bell (as in "Mother Bell").', 
+				'OLYMPIC BELL - The Olympic Bell was commissioned and cast for the 2012 London Olympic Games, and is the largest harmonically-tuned bell in the world. Cast in bronze bell metal, it is 6 ft 7 in high with a diameter of 10 ft 11 in, and weighs 51,393 lb. The bell is now displayed in the Olympic Park.',
+				'HELLS BELLS - "Hells Bells" is the first track of Back in Black, the seventh studio album by Australian hard rock band AC/DC and their comeback album after the death of lead singer Bon Scott.',
+				'BELLS WHISKEY - A brand of blended Scotch whisky originally produced by Arthur Bell & Sons Ltd and now owned by Diageo. It is the best selling whisky in the UK.',
+				'LIBERTY BELL - The Liberty Bell bears a timeless message: Proclaim Liberty Throughout All the Land Unto All the Inhabitants thereof.  The State House bell, now known as the Liberty Bell, rang in the tower of the Pennsylvania State House. Today, we call that building Independence Hall. Pennsylvania first ordered a bell for the bell tower in 1751 from the Whitechapel Foundry in London. That bell cracked on the first test ring. Local metalworkers John Pass and John Stow melted down that bell and cast a new one right there in Philadelphia.',
+				'TSAR BELL - The 216-ton Russian Tsar Bell on display on the grounds of the Moscow Kremlin is the heaviest bell known to exist in the world today. However, a very large piece broke off from the Tsar Bell during a fire which engulfed the tower the bell was intended to be hung in, so this irreparably damaged bell has never been suspended or rung. The Tsar Bell cannot be considered as the heaviest functioning bell in the world due to its inability to serve as a percussion instrument.',
+				'THE BELL OF GOOD LUCK - is a large bell located in Foquan Temple in Pingdingshan, Henan, China. It is close to the Spring Temple Buddha, the worlds tallest Buddha statue. The bell weighs 116 metric tons, and is 8.108 metres in height and 5.118 metres in diameter at its widest point. The Bell of Good Luck therefore, at the time of its construction, claimed the title of heaviest functioning bell in the world.',
+				'THE MINGUN BELL - is a bell located in Mingun, Sagaing Region, Myanmar. It was the heaviest functioning bell in the world at several times in history.The bell is uncracked and in good ringing condition. The bell does not have a clanger but is rung by striking the outer edge.',
+				'World Peace Bell Association (WPBA) is a Japanese organisation which attempts to raise awareness of the World peace movement by casting and installing Japanese temple bells in locations around the world. The bells are made using melted-down coinage donated from countries around the world. They have been placed in sixteen countries to date, with the US, Japan and Australia having more than one bell.',
+				'BELFRY - The belfry is a structure enclosing bells for ringing as part of a building, usually as part of a bell tower or steeple. It can also refer to the entire tower or building, particularly in continental Europe for such a tower attached to a city hall or other civic building. A saying for someone who is crazy - "Bats In the Belfry"',
+				'FULL CIRCLE RINGING - is a method of ringing a bell such that it swings in a complete circle from mouth upwards around to mouth upwards and then back again repetitively. Full-circle tower bell ringing in England developed in the early 17th century, when bell ringers found that swinging a bell through a much larger arc than that required for swing-chiming gave control over the time between successive strikes of the clapper.',
+				'COWBELL - The cowbell is an idiophone hand percussion instrument used in various styles of music including salsa and infrequently in popular music. It is named after the similar bell historically used by herdsmen to keep track of the whereabouts of cows. See SNL I gotta have more cowbell.',
+				'THE JUSTICE BELL (The Womens Liberty Bell) is a replica of the Liberty Bell made in 1915. It was created to promote the cause for womens suffrage in the United States from 1915 to 1920. The bell is on permanent display at the Washington Memorial Chapel in Valley Forge National Park in Pennsylvania.',
+				'BIG BEN - Big Ben is the nickname for the Great Bell of the striking clock at the north end of the Palace of Westminster; the name is frequently extended to refer to both the clock and the clock tower. The official name of the tower in which Big Ben is located was originally the Clock Tower; it was renamed Elizabeth Tower in 2012 to mark the Diamond Jubilee of Elizabeth II, Queen of the United Kingdom.',
+				'CALL BELL - A call bell is used in hotels or other such facilities where people need to call attention to the person in charge to check them in, take their bags, of for any other reasons.',
+				'Kristen Bell - Kristen Anne Bell is an American actress, singer, and producer. She began her professional acting career by starring in stage productions while attending the Tisch School of the Arts at New York University. Born:Kristen Anne Bell, July 18, 1980, Huntington Woods, Michigan, U.S..',
+				'Alexander Graham Bell - A Scottish-born inventor, scientist, and engineer who is credited with inventing and patenting the first practical telephone. He also co-founded the American Telephone and Telegraph Company in 1885.'					
+			]
+	
+			function getRandomTrivia() {
+				var randomNumber = Math.floor(Math.random() * (trivia.length));
+				document.getElementById('triviaDisplay').innerHTML = trivia[randomNumber];
+			}
+			window.onload = getRandomTrivia;
+		</script>
+		<script>
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+			  var openDropdown = dropdowns[i];
+			  if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			  }
+			}
+		  }
+		}
+		</script>		
+	</head>
+
+	<center>
+	<body>
+
+		<div class="center" id="main">
+
+			<center>
+			<h1 style="font-size:60"> BELL RINGER</h1>
+			</center>	
+
+			<button class="dropbtn" type="button" onclick="sendRingRequest()">RING THAT BELL</button>
+
+			<div class="dropdown">
+			<button onclick="myFunction()" class="dropbtn">SCHEDULED</button>
+			<div id="myDropdown" class="dropdown-content">
+				<a href="#home">1 @ 1PM Everyday</a>
+				<a href="#contact">3 @ Midnight NYE</a>
+			</div>
+			</div>
+			<p class="center" id="bellnotifs"></p>
+			<!-- Notifications will display here -->
+		</div>
+		
+		<div class="center" id="spacer">
+		
+		</div> 
+		
+		<center>
+		<h1 style="color:white;font-size:36">BELL TRIVIA</h1>
+		</center>		
+			
+		<div class="fcenter" id="footer">
+			<p id="triviaDisplay" style="font-size:140%">
+			<!-- Quotes will display here -->
+			</p>
+			<!-- Uncomment line below to add a button (GET BELL TRIVIA) to web page  -->
+			<!-- <button type="button" onclick="getRandomTrivia()">GET BELL TRIVIA</button> -->
+		</div>	
+	</body>
+	</center>
+</html>

@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+echo "Starting live tail of /var/log/bell.log to see the lap times"
+
+tail -f /var/log/bell.log
